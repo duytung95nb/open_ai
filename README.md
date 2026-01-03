@@ -24,13 +24,13 @@ A Python command-line application that fetches news articles from Vietnamese RSS
 2. Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
-If using python3
+Or using pip directly (if pip points to Python 3):
 
 ```bash
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. Set up your OpenAI API key:
@@ -60,37 +60,44 @@ export OPENAI_API_KEY=your_openai_api_key_here
 **Fetch and process new articles (generates both individual summaries and daily digest):**
 
 ```bash
-python main.py fetch
+python3 main.py fetch
 ```
 
 **Generate only individual article summaries:**
 
 ```bash
-python main.py fetch --individual
+python3 main.py fetch --individual
 ```
 
 **Generate only daily digest:**
 
 ```bash
-python main.py fetch --digest
+python3 main.py fetch --digest
 ```
 
 **Specify custom output directory:**
 
 ```bash
-python main.py fetch --output-dir ./my_summaries
+python3 main.py fetch --output-dir ./my_summaries
 ```
 
 **List all processed articles:**
 
 ```bash
-python main.py list
+python3 main.py list
 ```
 
 **Clear processed articles database:**
 
 ```bash
-python main.py clear
+python3 main.py clear
+```
+
+**Note:** On Unix-like systems (Linux/macOS), you can make the script executable and run it directly:
+
+```bash
+chmod +x main.py
+./main.py fetch
 ```
 
 ### Output Files

@@ -1,12 +1,14 @@
 """RSS feed fetcher and parser for Vietnamese news sources."""
 import feedparser
+import requests
 import logging
+import certifi
 from typing import List, Dict, Optional
 from datetime import datetime
 from time import struct_time
 
 logger = logging.getLogger(__name__)
-
+CA_CERT_PATH = certifi.where()
 RSS_FEEDS = [
     "https://vnexpress.net/rss/tin-moi-nhat.rss",
     "https://thanhnien.vn/rss/home.rss"
@@ -26,7 +28,10 @@ def fetch_rss_feeds() -> List[Dict]:
     for feed_url in RSS_FEEDS:
         try:
             logger.info(f"Fetching RSS feed: {feed_url}")
-            feed = feedparser.parse(feed_url)
+            response = requests.get(feed_url, verify=CA_CERT_PATH)
+            response.raise_for_status() # Raise an exception for bad status codes
+
+            feed = feedparser.parse(response.text)
             
             if feed.bozo and feed.bozo_exception:
                 logger.warning(f"Feed parsing warning for {feed_url}: {feed.bozo_exception}")

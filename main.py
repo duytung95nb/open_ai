@@ -1,11 +1,18 @@
+#!/usr/bin/env python3
 """Main CLI entry point for news summary application."""
 import argparse
 import logging
 import sys
-import os
 from pathlib import Path
 from datetime import datetime
 from typing import List, Dict
+
+
+# Check Python version
+if sys.version_info < (3, 8):
+    print("Error: This application requires Python 3.8 or higher.")
+    print(f"Current version: {sys.version}")
+    sys.exit(1)
 
 from rss_fetcher import fetch_rss_feeds
 from storage import ArticleStorage

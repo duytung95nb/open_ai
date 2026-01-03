@@ -12,7 +12,7 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 # Default model for cost efficiency
-DEFAULT_MODEL = os.getenv('OPENAI_MODEL', 'gpt-4o-mini')
+DEFAULT_MODEL = os.getenv('OPENAI_MODEL', 'gpt-5-mini')
 
 
 class OpenAIClient:
