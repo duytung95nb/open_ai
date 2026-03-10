@@ -150,9 +150,7 @@ Daily Digest:"""
                     messages=[
                         {"role": "system", "content": "You are a helpful assistant that creates comprehensive daily news digests in Vietnamese, organizing articles by themes and topics."},
                         {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.7,
-                    max_tokens=1000
+                    ]
                 )
                 
                 digest = response.choices[0].message.content.strip()
